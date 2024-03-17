@@ -1,7 +1,11 @@
 import React from 'react';
 import s from './Options.module.css';
 
-export const Options = ({ updateFeedback, resetFeedback }) => {
+export const Options = ({
+  updateFeedback,
+  resetFeedback,
+  totalFeedbackCount,
+}) => {
   return (
     <div className={s.buttonsFeedbackContainer}>
       <button
@@ -22,9 +26,11 @@ export const Options = ({ updateFeedback, resetFeedback }) => {
       >
         Bad
       </button>
-      <button className={s.buttonFeedback} onClick={resetFeedback}>
-        Reset
-      </button>
+      {!!totalFeedbackCount && (
+        <button className={s.buttonFeedback} onClick={resetFeedback}>
+          Reset
+        </button>
+      )}
     </div>
   );
 };

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Description from './components/Description/Description';
 import Feedback from './components/Feedback/Feedback';
 import Options from './components/Options/Options';
+import Notification from './components/Notification/Notification'
 import s from './App.module.css'
 
 const initialFeedbackState = { good: 0, neutral: 0, bad: 0 };
@@ -42,6 +43,7 @@ function App() {
       <Options
         updateFeedback={updateFeedbackCount}
         resetFeedback={resetFeedback}
+        totalFeedbackCount={totalFeedbackCount}
       />
       {totalFeedbackCount !== 0 ? (
         <Feedback
@@ -50,7 +52,7 @@ function App() {
           positiveFeedbackPercentage={calculatePositiveFeedbackPercentage}
         />
       ) : (
-        <p className={s.feedbackAlternativeText}>No feedback yet</p>
+        <Notification/>
       )}
     </div>
   );
